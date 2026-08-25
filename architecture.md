@@ -73,11 +73,24 @@ interface ForensicClue {
 
 ---
 
-### Module 3: Layered Sound Staging & Foley Mixer
+### Module 3: Layered Sound Staging & Multi-Voice Persona Matrix
 
-Raw AI speech sounds sterile. The audio engine layers a dynamic, era-appropriate soundscape using the **Web Audio API**:
+Raw AI speech sounds sterile. The audio engine pairs genre-tailored voice synthesis from **`gemini-3.1-flash-tts-preview`** with procedural ambient foley in the **Web Audio API**:
 
-* **Channel 1 (Voice Track):** High-clarity TTS voice stream with slight room warmth.
+#### 1. Dynamic Voice Persona & Tone Matrix
+
+| Narrative Mode / Genre | Recommended Voice Profile | Vocal Delivery & Tone Directives | Expressive Stage Tags |
+| :--- | :--- | :--- | :--- |
+| **Noir Detective** | `Fenrir` / `Charon` | World-weary, gravelly, cynical, clipped cadence | `[whispers]`, `[weary pause]`, `[cynical tone]` |
+| **Archival Case File** | `Charon` / `Kore` | Measured, clinical, historical gravity, forensic cadence | `[solemn tone]`, `[measured deduction]` |
+| **Cinematic Storyteller** | `Aoede` / `Puck` | Evocative, dynamic emotional inflection, literary pacing | `[hushed anticipation]`, `[dramatic swell]` |
+| **Polaroid Nostalgia** | `Kore` | Warm, reflective, gentle, melancholic cadence | `[warm memory]`, `[quiet reflection]` |
+
+#### 2. Expressive Audio Tags & Stage Directions
+`gemini-3.1-flash-tts-preview` parses inline narrative stage directions embedded into the prompt script. The narrative engine automatically inserts vocal cues matched to the extracted `contextual_mood_tags` before firing the speech request.
+
+#### 3. Dual-Track Web Audio Foley Mixer
+* **Channel 1 (Voice Track):** High-clarity TTS stream with subtle room warmth and compression.
 * **Channel 2 (Ambient Foley):** Continuous background texture loop matched to `ambient_sound_profile` (vinyl crackle, gentle rain against glass, analog tape hiss, distant clock tick).
 * **Dynamic Audio Ducking:** Foley automatically attenuates by -6dB during active narration and swells softly during narrative pauses.
 
@@ -111,7 +124,8 @@ Rather than an arbitrary center zoom, the camera glides dynamically between dete
 | :--- | :--- | :--- |
 | **Frontend Core** | React / Vite + TypeScript | Blazing fast build, lightweight client runtime, zero server overhead. |
 | **Styling & Aesthetics** | Modern Vanilla CSS | Sleek darkroom/dossier aesthetic, custom glassmorphism, hardware-accelerated 3D transforms. |
-| **AI Inference** | Google AI Studio (`gemini-2.0-flash-lite`) | Sub-second multimodal vision inference, Tier 2 high-throughput concurrency, structured JSON schema. |
+| **AI Vision & Forensics** | Google AI Studio (`gemini-3.1-flash-lite`) | Sub-second multimodal vision inference, Tier 2 high-throughput concurrency, structured JSON schema. |
+| **Voice Synthesis (TTS)** | Google AI Studio (`gemini-3.1-flash-tts-preview`) | Direct audio modality generation, expressive stage directions, genre-specific voice profiles (`Fenrir`, `Charon`, `Aoede`, `Kore`). |
 | **Audio Processing** | Web Audio API | Client-side dual-track mixer, procedural foley loops, dynamic audio ducking. |
 | **Video Rendering** | HTML5 Canvas + WebCodecs / MediaStream | Zero-cost client-side video composition and MP4 export. |
 
