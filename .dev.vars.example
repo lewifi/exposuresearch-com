@@ -1,5 +1,0 @@
-# Google AI Studio API Keys & Models
-GEMINI_API_KEY=your_google_ai_studio_key_here
-GEMINI_VISION_MODEL=gemini-3.1-flash-lite
-GEMINI_TTS_MODEL=gemini-3.1-flash-tts-preview
-GEMINI_VOICE_NAME=Kore
