@@ -1,7 +1,10 @@
 import type { ForensicInvestigationResult } from "../types/forensics";
 import { FORENSIC_RESPONSE_SCHEMA, buildForensicPrompt } from "./prompts";
 
-const API_KEY = import.meta.env.VITE_GEMINI_API_KEY || "";
+const GENERAL_API_KEY = import.meta.env.VITE_GEMINI_API_KEY || "";
+const VISION_API_KEY = import.meta.env.VITE_GEMINI_VISION_API_KEY || GENERAL_API_KEY;
+const TTS_API_KEY = import.meta.env.VITE_GEMINI_TTS_API_KEY || GENERAL_API_KEY;
+
 const VISION_MODEL = import.meta.env.VITE_GEMINI_VISION_MODEL || "gemini-3.1-flash-lite";
 const TTS_MODEL = import.meta.env.VITE_GEMINI_TTS_MODEL || "gemini-3.1-flash-tts-preview";
 const VOICE_NAME = import.meta.env.VITE_GEMINI_VOICE_NAME || "Kore";
@@ -13,8 +16,8 @@ export async function analyzePhotoWithGemini(
   base64DataUrl: string,
   mode: "detective" | "storyteller" | "archivist" = "detective"
 ): Promise<ForensicInvestigationResult> {
-  if (!API_KEY) {
-    throw new Error("GEMINI_API_KEY_MISSING");
+  if (!VISION_API_KEY) {
+    throw new Error("GEMINI_VISION_API_KEY_MISSING");
   }
 
   // Strip prefix (e.g. data:image/jpeg;base64,)
@@ -23,7 +26,7 @@ export async function analyzePhotoWithGemini(
 
   const systemPrompt = buildForensicPrompt(mode);
 
-  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${VISION_MODEL}:generateContent?key=${API_KEY}`;
+  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${VISION_MODEL}:generateContent?key=${VISION_API_KEY}`;
 
   const payload = {
     contents: [
@@ -78,9 +81,9 @@ export async function synthesizeVoiceWithGemini(
   narrationText: string,
   voiceName: string = VOICE_NAME
 ): Promise<string | null> {
-  if (!API_KEY) return null;
+  if (!TTS_API_KEY) return null;
 
-  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${TTS_MODEL}:generateContent?key=${API_KEY}`;
+  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${TTS_MODEL}:generateContent?key=${TTS_API_KEY}`;
 
   const payload = {
     contents: [
