@@ -28,6 +28,7 @@
   /* Typography */
   --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", monospace;
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-archivo: "Archivo", "Inter", sans-serif;
   --font-serif: "Playfair Display", Georgia, serif;
 
   /* Transitions & Animation Timings */
