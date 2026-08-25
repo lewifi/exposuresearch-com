@@ -1,13 +1,13 @@
 import type { ForensicInvestigationResult } from "../types/forensics";
 import { FORENSIC_RESPONSE_SCHEMA, buildForensicPrompt } from "./prompts";
 
-const GENERAL_API_KEY = import.meta.env.VITE_GEMINI_API_KEY || "";
-const VISION_API_KEY = import.meta.env.VITE_GEMINI_VISION_API_KEY || GENERAL_API_KEY;
-const TTS_API_KEY = import.meta.env.VITE_GEMINI_TTS_API_KEY || GENERAL_API_KEY;
+const GENERAL_API_KEY = import.meta.env.GEMINI_API_KEY || import.meta.env.VITE_GEMINI_API_KEY || "";
+const VISION_API_KEY = import.meta.env.GEMINI_VISION_API_KEY || import.meta.env.VITE_GEMINI_VISION_API_KEY || GENERAL_API_KEY;
+const TTS_API_KEY = import.meta.env.GEMINI_TTS_API_KEY || import.meta.env.VITE_GEMINI_TTS_API_KEY || GENERAL_API_KEY;
 
-const VISION_MODEL = import.meta.env.VITE_GEMINI_VISION_MODEL || "gemini-3.1-flash-lite";
-const TTS_MODEL = import.meta.env.VITE_GEMINI_TTS_MODEL || "gemini-3.1-flash-tts-preview";
-const VOICE_NAME = import.meta.env.VITE_GEMINI_VOICE_NAME || "Kore";
+const VISION_MODEL = import.meta.env.GEMINI_VISION_MODEL || import.meta.env.VITE_GEMINI_VISION_MODEL || "gemini-3.1-flash-lite";
+const TTS_MODEL = import.meta.env.GEMINI_TTS_MODEL || import.meta.env.VITE_GEMINI_TTS_MODEL || "gemini-3.1-flash-tts-preview";
+const VOICE_NAME = import.meta.env.GEMINI_VOICE_NAME || import.meta.env.VITE_GEMINI_VOICE_NAME || "Kore";
 
 /**
  * Executes a single-pass forensic clue extraction using Gemini 3.1 Flash-Lite
