@@ -1,5 +1,4 @@
-import React from "react";
-import { AudioTrackState, AmbientSoundProfile } from "../../types/forensics";
+import type { AudioTrackState, AmbientSoundProfile } from "../../types/forensics";
 import "./AudioMixerControls.css";
 
 interface AudioMixerControlsProps {
@@ -10,10 +9,10 @@ interface AudioMixerControlsProps {
   onVolumeChange: (voice: number, ambient: number) => void;
 }
 
-export const AudioMixerControls: React.FC<AudioMixerControlsProps> = () => {
+export const AudioMixerControls: React.FC<AudioMixerControlsProps> = (props) => {
   return (
-    <div className="audio-mixer-container">
-      {/* Play/pause, waveform timeline scrubber, ambient volume slider, ducking indicator */}
+    <div className="audio-mixer-container" onClick={props.onTogglePlay}>
+      <span>Mixer {props.ambientProfile}</span>
     </div>
   );
 };

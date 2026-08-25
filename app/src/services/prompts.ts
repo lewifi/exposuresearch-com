@@ -1,4 +1,3 @@
-import { ForensicInvestigationResult } from "../types/forensics";
 
 export const FORENSIC_RESPONSE_SCHEMA = {
   type: "OBJECT",

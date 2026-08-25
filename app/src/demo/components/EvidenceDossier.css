@@ -1,0 +1,195 @@
+.evidence-dossier-root {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.dossier-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 1rem;
+}
+
+.dossier-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.dossier-icon {
+  color: var(--copper);
+}
+
+.dossier-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.btn-retake {
+  padding: 0.5rem 1rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-retake:hover {
+  background-color: var(--bg-card-hover);
+  border-color: var(--border-copper);
+  color: var(--text-primary);
+}
+
+.dossier-metadata-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--bg-surface);
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+}
+
+.metadata-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.metadata-label {
+  color: var(--text-dim);
+}
+
+.metadata-value {
+  color: var(--copper);
+  font-weight: 600;
+}
+
+.dossier-mood-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.dossier-mood-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background-color: rgba(200, 157, 124, 0.08);
+  border: 1px solid var(--border-copper);
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--copper);
+}
+
+.dossier-clues-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.clues-heading {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.clues-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.clue-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.clue-card:hover {
+  background-color: var(--bg-card-hover);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.clue-card--active {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 16px var(--accent-cyan-glow);
+  background-color: rgba(6, 182, 212, 0.04);
+}
+
+.clue-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.clue-badge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #0a0c10;
+  background-color: var(--accent-cyan);
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+.clue-timecode {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.clue-coords {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  margin-left: auto;
+}
+
+.clue-observation {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.35rem 0;
+}
+
+.clue-narration {
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin: 0;
+}

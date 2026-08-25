@@ -1,5 +1,4 @@
-import React from "react";
-import { ForensicClue } from "../../types/forensics";
+import type { ForensicClue } from "../../types/forensics";
 import "./EvidenceBoard.css";
 
 interface EvidenceBoardProps {
@@ -10,10 +9,10 @@ interface EvidenceBoardProps {
   eraEstimate: string;
 }
 
-export const EvidenceBoard: React.FC<EvidenceBoardProps> = () => {
+export const EvidenceBoard: React.FC<EvidenceBoardProps> = (props) => {
   return (
     <aside className="evidence-board-container">
-      {/* Evidence tags, timeline checkpoints, and forensic notes */}
+      <span>Evidence {props.eraEstimate}</span>
     </aside>
   );
 };

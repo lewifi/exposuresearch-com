@@ -8,8 +8,8 @@ interface DarkroomDropzoneProps {
 
 export const DarkroomDropzone: React.FC<DarkroomDropzoneProps> = ({ onImageSelected, isScanning }) => {
   return (
-    <div className="darkroom-dropzone-container">
-      {/* Interactive dropzone & red safe-light scanner effect */}
+    <div className="darkroom-dropzone-container" onClick={() => onImageSelected && onImageSelected(new File([], "placeholder"), "")}>
+      <span>{isScanning ? "Scanning..." : "Select File"}</span>
     </div>
   );
 };

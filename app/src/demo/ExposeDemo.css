@@ -1,0 +1,242 @@
+@import "../styles/tokens.css";
+
+.expose-demo-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Background Film Grain and Ambient Darkroom Atmosphere */
+.expose-demo-container::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 15% 15%, rgba(245, 158, 11, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.03) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Header */
+.expose-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: rgba(10, 12, 16, 0.85);
+  backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.btn-hamburger {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all var(--transition-fast);
+}
+
+.btn-hamburger:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-surface);
+}
+
+.brand-lockup {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+}
+
+/* Absolute Title in Playfair Display Italics with Copper Ampersand */
+.brand-title {
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.copper-ampersand {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--copper);
+}
+
+.brand-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+/* Header Mode Chips */
+.header-mode-chips {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.chip-mode {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.45rem 0.85rem;
+  border-radius: 100px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.chip-mode:hover {
+  background-color: var(--bg-card-hover);
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.chip-mode--active {
+  background-color: rgba(200, 157, 124, 0.12);
+  border-color: var(--border-copper);
+  color: var(--copper);
+  font-weight: 600;
+}
+
+/* Main Stage */
+.expose-main-stage {
+  flex-grow: 1;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.stage-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  animation: fadeIn 300ms ease-out;
+}
+
+.stage-intro {
+  text-align: center;
+  margin-bottom: 2rem;
+  max-width: 680px;
+}
+
+.intro-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background-color: rgba(245, 158, 11, 0.1);
+  border: 1px solid var(--border-active);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent-amber);
+  margin-bottom: 0.85rem;
+  letter-spacing: 0.06em;
+}
+
+.section-headline {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin: 0 0 0.75rem 0;
+  line-height: 1.2;
+}
+
+.section-description {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Investigation Split Layout */
+.investigation-split-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+/* Footer */
+.expose-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem;
+  background-color: var(--bg-surface);
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  position: relative;
+  z-index: 10;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.footer-link {
+  color: var(--copper);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color var(--transition-fast);
+}
+
+.footer-link:hover {
+  color: #dfb496;
+  text-decoration: underline;
+}
+
+.version-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+}

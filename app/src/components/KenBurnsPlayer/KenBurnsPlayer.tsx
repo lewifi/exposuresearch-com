@@ -1,5 +1,4 @@
-import React from "react";
-import { ForensicClue, CameraCoordinate } from "../../types/forensics";
+import type { ForensicClue, CameraCoordinate } from "../../types/forensics";
 import "./KenBurnsPlayer.css";
 
 interface KenBurnsPlayerProps {
@@ -10,10 +9,10 @@ interface KenBurnsPlayerProps {
   isPlaying: boolean;
 }
 
-export const KenBurnsPlayer: React.FC<KenBurnsPlayerProps> = () => {
+export const KenBurnsPlayer: React.FC<KenBurnsPlayerProps> = (props) => {
   return (
     <div className="ken-burns-viewport">
-      {/* 60fps hardware-accelerated pan/zoom canvas and kinetic subtitle bar */}
+      <span>Ken Burns {props.subtitles}</span>
     </div>
   );
 };

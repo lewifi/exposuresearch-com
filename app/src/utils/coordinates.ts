@@ -1,4 +1,4 @@
-import { CameraCoordinate } from "../types/forensics";
+import type { CameraCoordinate } from "../types/forensics";
 
 /**
  * Calculates the center point and zoom transform for a normalized 0-1000 bounding box.
