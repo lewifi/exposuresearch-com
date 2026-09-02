@@ -15,7 +15,7 @@ flowchart TD
     end
 
     subgraph GoogleAI [Google AI Studio — Tier 2]
-        B --> D[Gemini 2.0 Flash-Lite Multimodal API]
+        B --> D[Gemini 3.1 Flash-Lite Multimodal API]
         D -->|Structured JSON| E[Forensic Clues + Bounding Boxes + Mood Tags + Script]
         E --> F[Gemini TTS / Voice Synthesis Engine]
     end
@@ -43,7 +43,7 @@ flowchart TD
 
 ---
 
-### Module 2: Multimodal Forensics Engine (`gemini-2.0-flash-lite`)
+### Module 2: Multimodal Forensics Engine (`gemini-3.1-flash-lite`)
 
 Instead of generic storytelling prompts, the engine executes a **Forensic Clue-Anchoring Pipeline** in a single round-trip:
 

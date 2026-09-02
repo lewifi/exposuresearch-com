@@ -29,14 +29,49 @@
   justify-content: center;
 }
 
+.cinema-transform-layer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 .cinema-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transform-style: preserve-3d;
-  will-change: transform, transform-origin;
 }
+
+/* Evidence reticle: corner brackets only, framing the detected region. The box
+   itself is transparent — just a positioning container for the four corners. Line
+   weights are divided by the camera scale (--reticle-scale) so brackets keep a
+   constant on-screen thickness no matter how far the camera has pushed in. */
+.evidence-reticle {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+  border: calc(1px / var(--reticle-scale, 1)) solid rgba(200, 157, 124, 0.55);
+  animation: reticle-reveal 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes reticle-reveal {
+  0% { opacity: 0; transform: scale(1.12); }
+  60% { opacity: 1; }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.reticle-corner {
+  position: absolute;
+  width: calc(14px / var(--reticle-scale, 1));
+  height: calc(14px / var(--reticle-scale, 1));
+  border: calc(2px / var(--reticle-scale, 1)) solid var(--copper);
+  filter: drop-shadow(0 0 calc(3px / var(--reticle-scale, 1)) var(--copper-glow));
+}
+
+.rc-tl { top: calc(-1px / var(--reticle-scale, 1)); left: calc(-1px / var(--reticle-scale, 1)); border-right: none; border-bottom: none; }
+.rc-tr { top: calc(-1px / var(--reticle-scale, 1)); right: calc(-1px / var(--reticle-scale, 1)); border-left: none; border-bottom: none; }
+.rc-bl { bottom: calc(-1px / var(--reticle-scale, 1)); left: calc(-1px / var(--reticle-scale, 1)); border-right: none; border-top: none; }
+.rc-br { bottom: calc(-1px / var(--reticle-scale, 1)); right: calc(-1px / var(--reticle-scale, 1)); border-left: none; border-top: none; }
 
 .cinema-vignette-overlay {
   position: absolute;
@@ -112,7 +147,7 @@
 }
 
 .cinema-subtitle-line {
-  font-family: var(--font-title);
+  font-family: var(--font-heading);
   font-style: italic;
   font-size: 1.15rem;
   line-height: 1.4;

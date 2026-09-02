@@ -186,7 +186,7 @@
 }
 
 .clue-narration {
-  font-family: var(--font-title);
+  font-family: var(--font-heading);
   font-style: italic;
   font-size: 0.92rem;
   color: var(--text-secondary);

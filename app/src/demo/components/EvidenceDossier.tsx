@@ -3,6 +3,14 @@ import { FolderArchive, Radio, Clock, MapPin, Crosshair, Sparkles } from "lucide
 import type { ForensicInvestigationResult, ForensicClue } from "../../types/forensics";
 import "./EvidenceDossier.css";
 
+/** Format a duration in seconds as mm:ss (e.g. 6 -> "00:06", 72 -> "01:12"). */
+function formatTimecode(totalSec: number): string {
+  const s = Math.max(0, Math.floor(totalSec));
+  const mm = Math.floor(s / 60);
+  const ss = s % 60;
+  return `${String(mm).padStart(2, "0")}:${String(ss).padStart(2, "0")}`;
+}
+
 interface EvidenceDossierProps {
   result: ForensicInvestigationResult;
   activeClueId: string;
@@ -72,7 +80,7 @@ export const EvidenceDossier: React.FC<EvidenceDossierProps> = ({
               >
                 <div className="clue-card-header">
                   <span className="clue-badge">CLUE #{idx + 1}</span>
-                  <span className="clue-timecode">TIMESTAMP: 0{clue.timestamp_sec}:00</span>
+                  <span className="clue-timecode">TIMESTAMP: {formatTimecode(clue.timestamp_sec)}</span>
                   <span className="clue-coords">
                     <Crosshair size={12} />
                     <span>[{clue.bounding_box_2d.join(", ")}]</span>

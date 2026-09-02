@@ -21,6 +21,24 @@ export function calculateCameraTarget(
 }
 
 /**
+ * Converts a normalized 0-1000 bounding box into CSS-ready percentages for an
+ * overlay that lives in the SAME transformed layer as the image (so it zooms with
+ * the Ken Burns camera and frames the exact detail Gemini flagged).
+ * @param box [ymin, xmin, ymax, xmax] normalized 0-1000
+ */
+export function getBoundingBoxRect(
+  box: [number, number, number, number]
+): { left: number; top: number; width: number; height: number } {
+  const [ymin, xmin, ymax, xmax] = box;
+  return {
+    left: xmin / 10,
+    top: ymin / 10,
+    width: (xmax - xmin) / 10,
+    height: (ymax - ymin) / 10
+  };
+}
+
+/**
  * Computes CSS transform-origin and scale for smooth hardware-accelerated Ken Burns glide
  */
 export function getKenBurnsTransformStyle(target: CameraCoordinate): React.CSSProperties {

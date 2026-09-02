@@ -1,5 +1,6 @@
 import type { ForensicInvestigationResult } from "../types/forensics";
 import { FORENSIC_RESPONSE_SCHEMA, buildForensicPrompt } from "./prompts";
+import { pcmBase64ToWavDataUrl, parsePcmSampleRate } from "../utils/pcm";
 
 const GENERAL_API_KEY = import.meta.env.GEMINI_API_KEY || import.meta.env.VITE_GEMINI_API_KEY || "";
 const VISION_API_KEY = import.meta.env.GEMINI_VISION_API_KEY || import.meta.env.VITE_GEMINI_VISION_API_KEY || GENERAL_API_KEY;
@@ -115,9 +116,13 @@ export async function synthesizeVoiceWithGemini(
     }
 
     const json = await res.json();
-    const inlineAudio = json.candidates?.[0]?.content?.parts?.[0]?.inline_data?.data;
+    const part = json.candidates?.[0]?.content?.parts?.[0];
+    const inlineAudio = part?.inline_data?.data;
     if (inlineAudio) {
-      return `data:audio/mp3;base64,${inlineAudio}`;
+      // Gemini's audio modality returns raw signed-16 PCM (default 24kHz mono),
+      // NOT mp3. Wrap it in a WAV container so it is actually playable/decodable.
+      const sampleRate = parsePcmSampleRate(part?.inline_data?.mime_type);
+      return pcmBase64ToWavDataUrl(inlineAudio, sampleRate);
     }
     return null;
   } catch {
